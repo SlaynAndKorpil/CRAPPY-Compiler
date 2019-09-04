@@ -1,8 +1,7 @@
 # CRAPPY-Compiler
--
 Compiles a CRAPPY script to a binary file that can be run by the CRAPPY interpreter.
 -
-Command Palette:
+Command Palette:\
 load       - loads either the content of a cell, a number or a string in the accumulator\
 loadstring - loads a string from the storage in the accumulator							\
 store      - stores the accumulator in a cell											\
