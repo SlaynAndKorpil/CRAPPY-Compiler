@@ -151,7 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="compilerflags.cpp" />
+    <ClCompile Include="consoleout.cpp" />
     <ClCompile Include="CRAPPY-Compiler.cpp" />
+    <ClCompile Include="errormessages.cpp" />
+    <ClCompile Include="fileloader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="compilerflags.h" />
+    <ClInclude Include="consoleout.h" />
+    <ClInclude Include="errormessages.h" />
+    <ClInclude Include="fileloader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
