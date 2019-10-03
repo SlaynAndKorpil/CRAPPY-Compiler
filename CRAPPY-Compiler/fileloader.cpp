@@ -1,26 +1,57 @@
 #include "fileloader.h"
 #include <fstream>
 #include "CompileTimeException.h"
+#include <iostream>
 
 using namespace std;
 
-// removes unnecessary whitespaces and comments
+// removes unnecessary whitespaces/tabs and comments
+// also replaces tabs with whitespaces
 void simplify(std::vector<std::string>* lines) {
     for (int i = 0; i < lines->size(); ++i) {
         std::string line = lines->at(i);
         std::string simplified = "";
+        bool in_char = false;
+        bool in_string = false;
 
         // skip all until first non-whitespace char
         int first_char = 0;
         while (first_char < line.size() && (line[first_char] == ' ' || line[first_char] == '\t'))
             ++first_char;
 
-        // removes comments by copying all chars until a ';' appeares
+        std::cout << line << "\n";
         for (int j = first_char; j < line.size(); ++j) {
             char curr_char = line[j];
-            if (curr_char == ';') break;
+
+            if (in_char) {
+                if (curr_char == '\'') in_char = false;
+            } else if (in_string) {
+                if (curr_char == '\"') in_string = false;
+            } else {
+                switch (curr_char) {
+                case ';':
+                    goto add_line;
+                case '\'':
+                    in_char = true;
+                    break;
+                case '\"':
+                    in_string = true;
+                    break;
+                case ' ':
+                case '\t':
+                    std::cout << "    has space at " << j << "\n";
+                    simplified += ' ';
+                    while (++j < (int) line.size() && (line[j] == ' ' || line[j] == '\t')) {}
+                    std::cout << "    until " << j << "\n";
+                    --j;
+                    continue;
+                }
+            }
+
             simplified += curr_char;
         }
+
+    add_line:
         lines->at(i) = simplified;
     }
 }
