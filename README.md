@@ -1,8 +1,7 @@
 # CRAPPY-Compiler
--
 Compiles a CRAPPY script to a binary file that can be run by the CRAPPY interpreter.
 -
-Command Palette:
+Command Palette:\
 load       - 0x00 loads either the content of a cell, a number or a string in the accumulator\
 loadstring - 0x01 loads a string from the storage in the accumulator                         \
 store      - 0x02 stores the accumulator in a cell                                           \
@@ -34,24 +33,24 @@ print      - 0x1B prints in the console                                         
 println    - 0x1C prints and adds a linebreak character                                      \
 printf     - 0x1D interpretes cell references while printing                                 \
 run        - 0x1E runs a scipts (e.g. shell, bash, another CRAPPY, etc.)                     \
-stop       - 0x1F quits the program                                                          \
+stop       - 0x1F quits the program
 
-number literal 0x00
-cell/$number   0x01
-accu as cell/$ 0x02
+number literal 0x00\
+cell/$number   0x01\
+accu as cell/$ 0x02\
 string literal 0x03
 
-01111111
- |||||||
- ||+------operator
- |+-------number literal / cell
- +--------accu / string literal
+01111111\
+ |||||||\
+ ||+------operator\
+ |+-------number literal / cell\
+ +--------accu / string literal\
 
-\#8-bit
-\#define haxx and $13
-load #0100111         0x00 0x00 0x47
-haxx                  0x0B 0x01 0x0D
-store $               0x02 0x02
-load "Hello"  	      0x00 0x03 0x48 0x65 0x6c 0x6c 0x6f 0x00
-println $     	      0x1A 0x02
+#8-bit\
+#define haxx and $13\
+load #0100111         0x00 0x00 0x47\
+haxx                  0x0B 0x01 0x0D\
+store $               0x02 0x02\
+load "Hello"  	      0x00 0x03 0x48 0x65 0x6c 0x6c 0x6f 0x00\
+println $     	      0x1A 0x02\
 stop "cya"            0x1D 0x63 0x79 0x61
