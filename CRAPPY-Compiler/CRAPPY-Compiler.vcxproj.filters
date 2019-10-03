@@ -21,13 +21,19 @@
     <ClCompile Include="compilerflags.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="errormessages.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="fileloader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="consoleout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cellsize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompileTimeException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="metainfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,13 +41,19 @@
     <ClInclude Include="compilerflags.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="errormessages.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="fileloader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="consoleout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cellsize.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompileTimeException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="metainfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

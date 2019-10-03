@@ -142,6 +142,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,17 +153,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cellsize.cpp" />
     <ClCompile Include="compilerflags.cpp" />
+    <ClCompile Include="CompileTimeException.cpp" />
     <ClCompile Include="consoleout.cpp" />
     <ClCompile Include="CRAPPY-Compiler.cpp" />
-    <ClCompile Include="errormessages.cpp" />
     <ClCompile Include="fileloader.cpp" />
+    <ClCompile Include="metainfo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cellsize.h" />
     <ClInclude Include="compilerflags.h" />
+    <ClInclude Include="CompileTimeException.h" />
     <ClInclude Include="consoleout.h" />
-    <ClInclude Include="errormessages.h" />
     <ClInclude Include="fileloader.h" />
+    <ClInclude Include="metainfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

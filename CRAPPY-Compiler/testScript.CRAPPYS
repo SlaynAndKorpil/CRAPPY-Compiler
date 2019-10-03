@@ -1,0 +1,27 @@
+; language in code:
+; https://code.visualstudio.com/api/language-extensions/language-server-extension-guide
+; https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide
+; https://code.visualstudio.com/docs/getstarted/settings
+
+
+
+;#This is BS
+    #16-bit
+
+#define store_temp store $1
+	#define IO
+
+#using E
+
+load 0xb01001110
+IO store $123
+IO println "Hello, world"
+random 2
+sub 1
+gop end
+IO printf "The random number was $$.\n"
+xor 0xAA
+IO store_temp
+IO printf "result: $1"
+end:
+IO stop "cya"

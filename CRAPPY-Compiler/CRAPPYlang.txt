@@ -1,0 +1,87 @@
+load       - 0x00 loads either the content of a cell, a number or a string in the accumulator
+loads      - 0x01 loads a string from the storage in the accumulator
+store      - 0x02 stores the accumulator in a cell
+mov        - 0x03 moves the value of one to another cell
+add        - 0x04 adds sth. to the accumulator
+sub        - 0x05 substracts
+mul        - 0x06 multiplication (repeats strings)
+div        - 0x07 division
+pow        - 0x08 power
+nlog       - 0x09 natural logarithm
+2log       - 0x0A logarithm 2
+3log       - 0x0B log 3
+not        - 0x0C binary not
+or         - 0x0D binary or
+nor        - 0x0E binary nor
+and        - 0x0f binary and
+nand       - 0x10 binary nand
+xor        - 0x11 xor
+nxor       - 0x12 binary nxor
+shiftl     - 0x13 left shift on the accumulator
+shiftr     - 0x14 right shift on the accumulator
+goto       - 0x15 goes to a certain marker
+goz        - 0x16 go if zero
+gonz       - 0x17 go if not zero
+gon        - 0x18 go if negative
+gonn       - 0x19 go if not negative
+gop        - 0x1A go if positive
+gonp       - 0x1B go if not positive
+gog        - 0x1C go if greater than
+gos        - 0x1D go if smaller than
+goeq       - 0x1E go if equal to
+print      - 0x1F prints in the console
+println    - 0x20 prints and adds a linebreak character
+printf     - 0x21 interpretes cell references while printing
+run        - 0x22 runs a scipt (e.g. shell, bash, another CRAPPY, etc.)
+stop       - 0x23 quits the program
+random     - 0x24 generates a random number between 0 and the given argument
+wait       - 0x25 waits for a given amount of milliseconds
+loop       - 0x26 loop over a sector of code; breaks when jumped out of it
+loopp      - 0x27 loops while positive
+loopnp     - 0x28 loops while not positve
+loopn      - 0x29 loops while negative
+loopnn     - 0x2A loops while not negative
+loopz      - 0x2B loops while zero
+loopnz     - 0x2C loops while not zero
+abs
+
+
+
+; TODO add floating point operations
+
+number literal 0x00
+cell/$number   0x01
+accu as cell/$ 0x02
+string literal 0x03
+
+#using PI
+#128-bit
+#define haxx and $13
+#using PI               ; like #define PI 3.1415....
+#using E
+load #0100111           0x00 0x00 0x47
+haxx                    0x04 0x01 0x0D
+store $                 0x02 0x02
+load "Hello"  	        0x00 0x03 0x48 0x65 0x6c 0x6c 0x6f 0x00
+println $     	        0x1A 0x02
+goto skipEnd            0x15 0x08
+stop "cya"              0x1D 0x63 0x79 0x61
+skipEnd:
+print "now ending..."   0x1F ... 
+stop "bye"              0x1D ...
+
+; this script chooses randomly one of four names
+#8-bit
+random 3
+jmpz anton
+sub 1
+jmpz dieter
+sub 1
+jmpz arnold
+stop "lydia"
+anton:
+stop "anton
+dieter:
+stop "dieter"
+arnold:
+stop "arnold"
