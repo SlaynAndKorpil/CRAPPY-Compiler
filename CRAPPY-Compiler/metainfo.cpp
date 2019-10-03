@@ -42,7 +42,6 @@ void get_meta_info_from(std::vector<std::string>* lines) noexcept(false) {
                 ("Failed to parse the meta command\n    " + line + "\nin line " + std::to_string(line_nr + 1)).c_str());
         }
     }
-    std::cout << "Cell size: " << (unsigned int) current_bit_id() << "\n";
 }
 
 Definition parse_using(const char* string) {

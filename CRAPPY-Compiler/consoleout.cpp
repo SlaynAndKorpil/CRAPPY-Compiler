@@ -12,11 +12,23 @@ void error(const char* msg) {
   std::cout << "\nERROR\n" << msg << "\n\n";
 }
 
+void error(std::string msg) {
+    error(msg.c_str());
+}
+
 void debug(const char* msg) {
   if (is_flag_set(DEBUGGER_INFORMATION_FLAG)) 
       std::cout << "DEBUG - " << msg << "\n";
 }
 
+void debug(std::string msg) {
+    debug(msg.c_str());
+}
+
 void message(const char* msg) {
-  std::cout << msg;
+  std::cout << msg << "\n";
+}
+
+void message(std::string msg) {
+    message(msg.c_str());
 }

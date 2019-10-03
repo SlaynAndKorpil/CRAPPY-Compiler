@@ -2,16 +2,15 @@
 // WORKFLOW -- load file -> memorize #-commands -> apply markers -> build binary -> generate file --
 
 #include <iostream>
-#include <string>
 #include <vector>
-#include <exception>
 #include "compilerflags.h"
 #include "fileloader.h"
 #include "consoleout.h"
 #include "CompileTimeException.h"
 #include "metainfo.h"
 
-const float version = 0.1f;
+
+const char* version = "0.0.0";
 
 void ini();
 int compile(int len, char* args[]);
@@ -24,7 +23,7 @@ int main(int argc, char* argv[]) {
 }
 
 void ini() {
-    message(("\nRunning CRAPPY compiler version " + std::to_string(version) + "\n").c_str());
+    message("\nRunning CRAPPY compiler version " + std::string(version) + "\n");
 }
 
 int compile(int len, char* args[]) {
@@ -40,13 +39,14 @@ int compile(int len, char* args[]) {
                 switch (flag) {
                 case HELP_FLAG:
                     // prints help msg
-                    std::cout << "Use this compiler to compile a CRAPPY source file into binary.\n";
-                    std::cout << "Usage: 'compiler.exe [options] <path to source file> [path for generated binary]'\n";
-                    std::cout << "Option flags:\n";
-                    std::cout << "  -H Prints this and exits.\n";
-                    std::cout << "  -I Give additional debugging information.\n";
-                    std::cout << "  -D Stop compilation when a 'unused #define' warning occures.\n";
-                    std::cout << "  -M Stop compilation when a 'unused marker' warning occures.\n\n";
+                    message(
+                        "Use this compiler to compile a CRAPPY source file into binary.\n"
+                        "Usage: 'compiler.exe [options] <path to source file> [path for generated binary]'\n"
+                        "Option flags:\n"
+                        "  -H Prints this and exits.\n"
+                        "  -I Give additional debugging information.\n"
+                        "  -D Stop compilation when a 'unused #define' warning occures.\n"
+                        "  -M Stop compilation when a 'unused marker' warning occures.\n\n");
                     return 0;
                 case 0:
                     // when flag unknown
@@ -63,17 +63,18 @@ int compile(int len, char* args[]) {
             }
         }
 
-        debug((R"(Compiling )" + source_file + " to " + bin_file + "\n").c_str());
+        debug("(Compiling )" + source_file + " to " + bin_file + "\n");
         std::vector<std::string> lines = load_lines_from_file(source_file);
-        /*for (int i = 0; i < lines.size(); ++i) {
-            std::cout << lines[i] << "\n";
-        } std::cout << "\n";*/
+
+        for (int i = 0; i < lines.size(); ++i) {
+            message(lines[i]);
+        } message("");
         get_meta_info_from(&lines);
-        
-        
+
+
         return 0;
 
-    } catch (CompileTimeException& _) {
+    } catch (CompileTimeException & _) {
         return -2;
     } catch (...) {
         error("Unknown exception was thrown.");
